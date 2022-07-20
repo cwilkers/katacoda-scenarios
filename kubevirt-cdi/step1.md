@@ -4,7 +4,7 @@
 
 At a high level, a PersistentVolumeClaim (PVC) is created. A custom controller watches for importer specific claims, and when discovered, starts an import process to create a raw image named _disk.img_ with the desired content into the associated PVC.
 
-In this exercise we start by deploying the CDI operator. Then, we import a CirrOS disk image and use it to start a VM.
+In this exercise we start by deploying the CDI Operator. Then, we import a CirrOS disk image and use it to start a VM.
 
 # Wait for KubeVirt to deploy
 
@@ -31,14 +31,14 @@ export VERSION=$(curl -Ls https://github.com/kubevirt/containerized-data-importe
 echo $VERSION
 ```{{execute}}
 
-Deploy operator (and scale its replicas down to one due to the resource limitations of the environment):
+Deploy Operator (and scale its replicas down to one due to the resource limitations of the environment):
 
 ```
 kubectl create -f https://github.com/kubevirt/containerized-data-importer/releases/download/$VERSION/cdi-operator.yaml
 kubectl -n cdi scale deployment/cdi-operator --replicas=1
 ```{{execute}}
 
-Create CRD to trigger operator deployment of CDI:
+Create CRD to trigger Operator deployment of CDI:
 
 `kubectl create -f https://github.com/kubevirt/containerized-data-importer/releases/download/$VERSION/cdi-cr.yaml`{{execute}}
 
@@ -46,7 +46,7 @@ Check status of CDI deployment. It may take some time before the cdi "PHASE" rea
 
 `kubectl get cdi -n cdi`{{execute}}
 
-To have _kubectl_ do the checking for you and let you know when the operator finishes its deployment, use the _wait_ command:
+To have _kubectl_ do the checking for you and let you know when the Operator finishes its deployment, use the _wait_ command:
 
 `kubectl wait -n cdi --for=jsonpath='{.status.phase}'=Deployed cdi/cdi`{{execute}}
 

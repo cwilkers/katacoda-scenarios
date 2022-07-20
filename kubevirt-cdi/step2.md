@@ -25,7 +25,7 @@ kubectl create -f pvc_cirros.yml
 
 This will create the PVC with a proper annotation so that the CDI controller detects it and launches an importer pod to gather the image specified in the *cdi.kubevirt.io/storage.import.endpoint* annotation.
 
-Grab the pod name to check later the logs. If the pod is not yet listed, wait a bit more because the operator is still doing required actions.
+Grab the pod name to check later the logs. If the pod is not yet listed, wait a bit more because the Operator is still doing required actions.
 
 `kubectl get pod`{{execute}}
 
@@ -83,7 +83,7 @@ spec:
             ssh_authorized_keys:
             - ssh-rsa YOUR_SSH_PUB_KEY_HERE
         name: cloudinitdisk
-  EOF
+EOF
 ```{{execute}}
 
 We change the YAML definition of this Virtual Machine to inject the default public key of user in the cloud instance. This scenario provides an environment with an ssh key already set up, so we will use the public key we find in the authorized_keys file.
@@ -113,9 +113,9 @@ Check the IP address:
 NAME      AGE       PHASE     IP             NODENAME
 testvm    1m        Running   192.168.1.16   controlplane```
 
-Now, connect via SSH
+Now, connect via SSH. The `cirros` user has the default password `gocubsgo`:
 
-```sh
+```
 ssh cirros@192.168.1.16
 ```
 

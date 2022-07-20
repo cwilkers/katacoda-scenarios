@@ -4,7 +4,7 @@ The command below applies a YAML definition of a virtual machine into the curren
 
 `kubectl apply -f https://kubevirt.io/labs/manifests/vm.yaml`{{execute}}
 
-We are creating a Virtual Machine in the same way as we would create any other Kubernetes resource thanks to the KubeVirt operator in our environment. Now we have a Virtual Machine as a Kubernetes resource.
+We are creating a Virtual Machine in the same way as we would create any other Kubernetes resource thanks to the KubeVirt Operator in our environment. Now we have a Virtual Machine as a Kubernetes resource.
 
 After the vm resource has been created, you can manage the VMs with standard 'kubectl' commands:
 

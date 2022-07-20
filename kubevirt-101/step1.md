@@ -1,6 +1,6 @@
-# Deploy KubeVirt
+#e Deploa KubeVirt
 
-Deploy the KubeVirt operator [^1] using the latest KubeVirt version.
+Deploy the KubeVirt Operator [^1] using the latest KubeVirt version.
 
 [^1]: An Operator is a method of packaging, deploying, and managing a Kubernetes application. A Kubernetes application is one that is deployed on Kubernetes and managed using the Kubernetes APIs and kubectl tooling. You can think of Operators as the runtime that manages this type of application on Kubernetes. If you want to learn more about Operators you can check the [Kubernetes documentation](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
 
@@ -16,7 +16,7 @@ Run the following command to deploy the KubeVirt Operator:
 
 `kubectl create -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT_VERSION}/kubevirt-operator.yaml`{{execute}}
 
-Now deploy KubeVirt by creating a Custom Resource that will trigger the 'operator' reaction and perform the deployment:
+Now deploy KubeVirt by creating a Custom Resource that will trigger the 'Operator' reaction and perform the deployment:
 
 `kubectl create -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT_VERSION}/kubevirt-cr.yaml`{{execute}}
 
@@ -26,7 +26,7 @@ Next, we need to configure KubeVirt to use software emulation for virtualization
 
 # Install Virtctl
 
-While we are waiting for the KubeVirt operator to start up all its Pods, we can take some time to download the client we will need to use in the next step.
+While we are waiting for the KubeVirt Operator to start up all its Pods, we can take some time to download the client we will need to use in the next step.
 
 _virtctl_ is a client utility that helps interact with VM's (start/stop/console, etc):
 
@@ -53,7 +53,7 @@ virt-operator-5649f67475-gmphg     1/1       Running   0          4m
 virt-operator-5649f67475-sw78k     1/1       Running   0          4m
 ```
 
-As there are multiple deployments involved, the best way to determine whether the operator is fully installed is to check the operator's Custom Resource itself:
+As there are multiple deployments involved, the best way to determine whether the Operator is fully installed is to check the Operator's Custom Resource itself:
 
 `kubectl -n kubevirt get kubevirt`{{execute}}
 
