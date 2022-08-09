@@ -7,6 +7,10 @@
     {
         "path": "kubevirt-cdi",
         "title": "Experiment with CDI"
+    },
+    {
+        "path": "kubevirt-migration",
+        "title": "Live Migration in KubeVirt"
     }
     ]
 }
