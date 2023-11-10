@@ -13,15 +13,15 @@ KubeVirt starting from `v0.17.0` onwards, allows upgrading one version at a time
 
 ##### Method 1: changing the imageTag value in the KubeVirt CR’s spec
 
-In this example we are going to update from the version `v0.56.1` to `v0.57.0`, that is as simple as patching the KubeVirt CR with the `imageTag: v0.57.0` value. From there the KubeVirt operator will begin the process of rolling out the new version of KubeVirt. Existing VM/VMIs will remain uninterrupted both during and after the update succeeds.
+In this example we are going to update from the version `v0.59.2` to `v1.0.0`, that is as simple as patching the KubeVirt CR with the `imageTag: v1.0.0` value. From there the KubeVirt operator will begin the process of rolling out the new version of KubeVirt. Existing VM/VMIs will remain uninterrupted both during and after the update succeeds.
 
-First, let's ensure we've `v0.56.1` installed by executing:
+First, let's ensure we've `v0.59.2` installed by executing:
 
 `kubectl get deployment.apps virt-operator -n kubevirt -o template --template='{{range .spec.template.spec.containers}}{{.image}}{{end}} '| awk -F: '{print $NF}'`{{execute}}
 
 Now let's proceed with the update:
 
-`kubectl patch kv kubevirt -n kubevirt --type=json -p '[{ "op": "add", "path": "/spec/imageTag", "value": "v0.57.0" }]'`{{execute}}
+`kubectl patch kv kubevirt -n kubevirt --type=json -p '[{ "op": "add", "path": "/spec/imageTag", "value": "v1.0.0" }]'`{{execute}}
 
 To follow the updating process you can keep watching the output on terminal 1 to see how the containers are stopped and started as the deployment happens.
 
@@ -35,7 +35,7 @@ When no `imageTag` value is set in the KubeVirt CR, the system assumes that the 
 
 Let's upgrade to the newer version after the upgrade done in the Method 1:
 
-`export KUBEVIRT_VERSION=v0.57.0`{{execute}}
+`export KUBEVIRT_VERSION=v1.0.0`{{execute}}
 
 
 `kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT_VERSION}/kubevirt-operator.yaml`{{execute}}
